@@ -23,7 +23,7 @@ export class MoviesController {
 
   @Get(':id')
   getOne(@Param('id') movieId: string) {
-    return this.moviesService.getOne(movieId);
+    return this.moviesService.getOne(+movieId);
   }
 
   @Post()
@@ -33,12 +33,12 @@ export class MoviesController {
 
   @Delete('/:id')
   remove(@Param('id') movieId: string) {
-    return this.moviesService.deleteOne(movieId);
+    return this.moviesService.deleteOne(+movieId);
   }
 
   //update some parts of resource, even we don't call parm, it doesn't answer
   @Patch('/:id')
   patch(@Param('id') movieId: string, @Body() updateData: UpdateMovieDto) {
-    return this.moviesService.update(movieId, updateData);
+    return this.moviesService.update(+movieId, updateData);
   }
 }
